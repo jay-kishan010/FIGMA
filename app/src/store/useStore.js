@@ -8,7 +8,7 @@ const useStore = create((set) => ({
   fetchItems: async () => {
     try {
       console.log("Fetching items from API...");
-      const response = await axios.get("http://localhost:5000/api/items");
+      const response = await axios.get("https://figma-backend-4.onrender.com/api/items");
       console.log("Fetched items:", response.data);
       set({ items: response.data });
     } catch (error) {
@@ -20,7 +20,7 @@ const useStore = create((set) => ({
   createItem: async (newItem) => {
     try {
       console.log("Creating new item...", newItem);
-      const response = await axios.post("http://localhost:5000/api/items", newItem); // POST request to backend
+      const response = await axios.post("https://figma-backend-4.onrender.com/api/items", newItem); // POST request to backend
       const createdItem = response.data;
       console.log("Created item:", createdItem);
 
@@ -36,7 +36,7 @@ const useStore = create((set) => ({
   // Update an item
   updateItem: async (id, updatedData) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/items/${id}`, {
+      const response = await fetch(`https://figma-backend-4.onrender.com/api/items/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedData),
@@ -57,7 +57,7 @@ const useStore = create((set) => ({
   // Delete an item
   deleteItem: async (id) => {
     try {
-      await fetch(`http://localhost:5000/api/items/${id}`, { method: "DELETE" });
+      await fetch(`https://figma-backend-4.onrender.com/api/items/${id}`, { method: "DELETE" });
 
       // Remove the item from the state
       set((state) => ({
